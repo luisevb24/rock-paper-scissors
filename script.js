@@ -1,4 +1,3 @@
-console.log("hello");
 /*
 Pseudocode:
 A function gets a random number between 0 and 1 and multiplies it by 10.
@@ -30,6 +29,9 @@ ELSE IF HUMAN TYPES "SCISSORS" RETURN "SCISSORS";
 function getHumanChoice(){
     return prompt("Make your choice!", "Rock");
 }
+//PLAYGAME FUNCTION CALLS PLAYROUND FUNCTION 5 TIMES, AND DECLARES A WINNER BASED ON THE SCORES VARIABLES
+
+function playGame(){
 /*
 VARIABLES THAT WILL TRACK THE SCORES ARE INITIALIZED
 */
@@ -45,7 +47,7 @@ function playRound(humanChoice, computerChoice){
     humanChoiceLower = humanChoice.toLowerCase();
     
     if (computerChoice == "Rock" && humanChoiceLower == "rock"){
-        console.log("Tie! Rock ties with Rock");
+        console.log("Tie!");
     } else if (computerChoice == "Rock" && humanChoiceLower == "paper"){
         console.log("You win! Rock loses to Paper");
         ++humanScore;
@@ -69,9 +71,25 @@ function playRound(humanChoice, computerChoice){
     } else if (computerChoice == "Scissors" && humanChoiceLower == "scissors"){
         console.log("Tie");
     }
+}
+
+for (let roundsPlayed = 0; roundsPlayed < 5; roundsPlayed++) {
+        playRound(getHumanChoice(), getComputerChoice());
+        console.log("Your Score: " + humanScore +
+                    " Computer's Score: " + computerScore
+        )
+  }
+if(humanScore > computerScore){
+    console.log("You Win!");
+} else if (humanScore < computerScore){
+    console.log("You Lose :(");
+} else if (humanScore == computerScore){
+    console.log("Is a tie");
+} else{
+    console.log("theres something weird going on");
+}
+
 
 }
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
 
+playGame();
